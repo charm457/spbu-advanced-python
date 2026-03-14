@@ -18,18 +18,18 @@ from pathlib import Path
 
 WORD_RE = re.compile(r"[0-9A-Za-zА-Яа-яЁё]+")
 
-
+#normolize
 def tokenize(text: str, *, lower: bool) -> list[str]:
     tokens = WORD_RE.findall(text)
     if lower:
         tokens = [t.lower() for t in tokens]
     return tokens
 
-
+#io
 def read_text(path: str) -> str:
     return Path(path).read_text(encoding="utf-8", errors="replace")
 
-
+#starts
 def count_words(tokens: list[str]) -> dict[str, int]:
     return dict(Counter(tokens))
 
@@ -39,7 +39,7 @@ def top_n(freqs: dict[str, int], n: int) -> list[tuple[str, int]]:
     items.sort(key=lambda kv: (-kv[1], kv[0]))
     return items[:n]
 
-
+#cli
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(prog="textstats")
     parser.add_argument("paths", nargs="+", help="Input text files")
