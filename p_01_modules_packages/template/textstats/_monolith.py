@@ -15,7 +15,7 @@ import re
 from collections import Counter
 from pathlib import Path
 
-
+#normolize
 WORD_RE = re.compile(r"[0-9A-Za-zА-Яа-яЁё]+")
 
 #normolize
@@ -33,7 +33,7 @@ def read_text(path: str) -> str:
 def count_words(tokens: list[str]) -> dict[str, int]:
     return dict(Counter(tokens))
 
-
+#starts
 def top_n(freqs: dict[str, int], n: int) -> list[tuple[str, int]]:
     items = list(freqs.items())
     items.sort(key=lambda kv: (-kv[1], kv[0]))
@@ -51,7 +51,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
     return parser.parse_args(argv)
 
-
+#cli
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
 

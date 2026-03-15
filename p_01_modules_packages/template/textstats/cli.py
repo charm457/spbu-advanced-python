@@ -2,9 +2,8 @@
 import argparse
 
 from .normalize import tokenize
-from .starts import count_words, top_n
+from .stats import count_words, top_n
 from .io import read_text
-
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(prog="textstats")
@@ -16,7 +15,6 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     group.add_argument("--no-lower", dest="lower", action="store_false")
 
     return parser.parse_args(argv)
-
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
